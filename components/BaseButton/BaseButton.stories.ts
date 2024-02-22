@@ -6,6 +6,7 @@ type Story = StoryObj<typeof BaseButton>
 const meta: Meta<typeof BaseButton> = {
   title: 'BaseButton',
   component: BaseButton,
+  tags: ['autodocs'],
   render: args => ({
     components: { BaseButton },
     setup () {
@@ -15,6 +16,10 @@ const meta: Meta<typeof BaseButton> = {
   })
 }
 
-export const Default: Story = {}
+export const Default: Story = {
+  args: {
+    label: 'Button'
+  }
+}
 
 export default meta
