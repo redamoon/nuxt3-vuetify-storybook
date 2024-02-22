@@ -2,7 +2,6 @@ import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
 import { createVuetify } from 'vuetify'
 // Styles
-import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'

@@ -9,8 +9,9 @@ const meta: Meta<typeof BaseButton> = {
   render: args => ({
     components: { BaseButton },
     setup () {
-      return args
-    }
+      return { args }
+    },
+    template: '<BaseButton v-bind="args" />'
   })
 }
 
