@@ -7,6 +7,13 @@ const meta: Meta<typeof BaseButton> = {
   title: 'BaseButton',
   component: BaseButton,
   tags: ['autodocs'],
+  argTypes: {
+    label: {
+      control: {
+        type: 'text'
+      }
+    }
+  },
   render: args => ({
     components: { BaseButton },
     setup () {
