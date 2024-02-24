@@ -12,7 +12,8 @@ const meta: Meta<typeof BaseButton> = {
       control: {
         type: 'text'
       }
-    }
+    },
+    onClick: { action: 'click' }
   },
   render: args => ({
     components: { BaseButton },
