@@ -15,9 +15,15 @@ const meta: Meta<typeof VBtn> = {
     },
     variant: {
       control: {
-        type: 'radio'
+        type: 'select'
       },
       options: ['plain', 'outlined', 'tonal', 'text', undefined]
+    },
+    color: {
+      control: {
+        type: 'select'
+      },
+      options: ['primary', 'success', 'error', 'info']
     },
     onClick: { action: 'click' }
   },
@@ -33,7 +39,8 @@ const meta: Meta<typeof VBtn> = {
 export const Default: Story = {
   args: {
     label: 'Button',
-    variant: undefined
+    variant: undefined,
+    color: 'primary'
   }
 }
 

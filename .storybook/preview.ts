@@ -1,9 +1,7 @@
 import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
-import { createVuetify } from 'vuetify'
 // Styles
 import vuetify from "../utils/vuetify";
-import '../asstes/main.css'
 
 setup((app) => {
   if (app) {

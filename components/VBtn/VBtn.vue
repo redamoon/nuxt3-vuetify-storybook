@@ -1,0 +1,26 @@
+<script setup lang="ts">
+defineProps<{
+   /**
+   * ボタンに表示するテキスト
+   */
+  label: string
+  variant?: 'plain' | 'outlined' | 'tonal' | 'text'
+  color: 'primary' | 'success' | 'error' | 'info'
+}>()
+const emits = defineEmits<{
+  /**
+   * @param label The label of the button
+   */
+  click: [label: string];
+}>()
+</script>
+
+<template>
+  <v-btn :label="label" :color="color" :variant="variant" @click="() => emits('click', 'Event')">
+    {{ label }}
+  </v-btn>
+</template>
+
+<style scoped>
+
+</style>
