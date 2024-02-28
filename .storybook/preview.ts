@@ -2,16 +2,12 @@ import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
 import { createVuetify } from 'vuetify'
 // Styles
-import 'vuetify/styles'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import vuetify from "../utils/vuetify";
+import '../asstes/main.css'
 
 setup((app) => {
   if (app) {
-    app.use(createVuetify({
-      components,
-      directives,
-    }))
+    app.use(vuetify)
   }
 })
 

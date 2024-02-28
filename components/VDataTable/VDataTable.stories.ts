@@ -90,7 +90,7 @@ export const Default: Story = {
 
 export const PaginationNone: Story = {
   args: {
-    isNoneFooter: true,
+    isPagination: true,
     headers,
     items
   }

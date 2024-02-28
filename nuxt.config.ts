@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     }
     // ...
   ],
+  css: ['@/assets/main.css'],
   vite: {
     vue: {
       template: {

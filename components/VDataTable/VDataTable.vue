@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 interface Header {
   title: string
   align: string
@@ -12,7 +11,7 @@ interface Item {
 }
 
 const props = defineProps<{
-  isNoneFooter: boolean
+  isPagination: boolean
   headers: Header[]
   items: Item[]
 }>()
@@ -22,9 +21,8 @@ const props = defineProps<{
   <v-data-table
     :headers="props.headers"
     :items="props.items"
-    item-key="name"
   >
-    <template v-if="props.isNoneFooter" #bottom />
+    <template v-if="props.isPagination" #bottom />
   </v-data-table>
 </template>
 
