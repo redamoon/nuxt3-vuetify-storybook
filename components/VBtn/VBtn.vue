@@ -6,6 +6,14 @@ defineProps<{
   label: string
   variant?: 'plain' | 'outlined' | 'tonal' | 'text'
   color: 'primary' | 'success' | 'error' | 'info'
+  flat?: boolean
+  exact?: boolean
+  elevation?: string | number
+  disabled?: boolean
+  height?: string | number
+  href?: string
+  icon?: any
+  loading?: string | boolean
 }>()
 const emits = defineEmits<{
   /**
@@ -16,7 +24,16 @@ const emits = defineEmits<{
 </script>
 
 <template>
-  <v-btn :label="label" :color="color" :variant="variant" @click="() => emits('click', 'Event')">
+  <v-btn
+    :label="label"
+    :color="color"
+    :variant="variant"
+    :flat="flat"
+    :exact="exact"
+    :elevation="elevation"
+    :disabled="disabled"
+    @click="() => emits('click', 'Event')"
+  >
     {{ label }}
   </v-btn>
 </template>

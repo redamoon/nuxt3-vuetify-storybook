@@ -13,6 +13,16 @@ const meta: Meta<typeof VBtn> = {
         type: 'text'
       }
     },
+    height: {
+      control: {
+        type: 'number'
+      }
+    },
+    elevation: {
+      control: {
+        type: 'number'
+      }
+    },
     variant: {
       control: {
         type: 'select'
@@ -24,6 +34,11 @@ const meta: Meta<typeof VBtn> = {
         type: 'select'
       },
       options: ['primary', 'success', 'error', 'info']
+    },
+    href: {
+      control: {
+        type: 'text'
+      }
     },
     onClick: { action: 'click' }
   },
@@ -40,7 +55,14 @@ export const Default: Story = {
   args: {
     label: 'Button',
     variant: undefined,
-    color: 'primary'
+    color: 'primary',
+    flat: false,
+    rounded: false,
+    disabled: false,
+    loading: true,
+    exact: false,
+    elevation: 1000,
+    height: 1000
   }
 }
 
