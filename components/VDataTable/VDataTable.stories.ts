@@ -63,7 +63,7 @@ const items = [
 ]
 
 const meta: Meta<typeof VDatatable> = {
-  title: 'VDataTable',
+  title: 'Components/VDataTable',
   component: VDatatable,
   tags: ['autodocs'],
   argTypes: {

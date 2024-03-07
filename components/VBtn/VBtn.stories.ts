@@ -4,7 +4,7 @@ import VBtn from './VBtn.vue'
 type Story = StoryObj<typeof VBtn>
 
 const meta: Meta<typeof VBtn> = {
-  title: 'VBtn',
+  title: 'Components/VBtn',
   component: VBtn,
   tags: ['autodocs'],
   argTypes: {
