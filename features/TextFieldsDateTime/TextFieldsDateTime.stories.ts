@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import InputDateTimePicker from './InputDateTimePicker.vue'
+import TextFieldsDateTime from './TextFieldsDateTime.vue'
 
-type Story = StoryObj<typeof InputDateTimePicker>;
+type Story = StoryObj<typeof TextFieldsDateTime>;
 
-const meta: Meta<typeof InputDateTimePicker> = {
-  title: 'Features/InputDateTimePicker',
-  component: InputDateTimePicker,
+const meta: Meta<typeof TextFieldsDateTime> = {
+  title: 'Features/TextFieldsDateTime',
+  component: TextFieldsDateTime,
   tags: ['autodocs'],
   argTypes: {
     label: {
@@ -15,11 +15,11 @@ const meta: Meta<typeof InputDateTimePicker> = {
     }
   },
   render: args => ({
-    components: { InputDateTimePicker },
+    components: { TextFieldsDateTime },
     setup () {
       return { args }
     },
-    template: '<InputDateTimePicker v-bind="args" />'
+    template: '<TextFieldsDateTime v-bind="args" />'
   })
 }
 export const Default: Story = {
