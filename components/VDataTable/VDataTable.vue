@@ -21,6 +21,7 @@ const props = defineProps<{
   <v-data-table
     :headers="props.headers"
     :items="props.items"
+    is-pagination
   >
     <template v-if="props.isPagination" #bottom />
   </v-data-table>

@@ -22,6 +22,12 @@ const meta: Meta<typeof VDatePickers> = {
     template: '<VDatePickers v-bind="args" />'
   })
 }
-export const Default: Story = {}
+export const Default: Story = {
+  args: {
+    hideHeader: false,
+    multiple: false,
+    isActions: true
+  }
+}
 
 export default meta
