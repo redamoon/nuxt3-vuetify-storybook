@@ -11,7 +11,8 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-docs",
-    "@storybook/blocks"
+    "@storybook/blocks",
+    "@storybook/addon-mdx-gfm"
   ],
   framework: {
     name: "@storybook/vue3-vite",
