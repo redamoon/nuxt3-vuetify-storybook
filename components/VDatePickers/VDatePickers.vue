@@ -11,12 +11,14 @@ withDefaults(defineProps<{
   color?: string;
   disabled?: boolean;
   showAdjacentMonths?: boolean;
+  elevation?: number;
 }>(), {
   multiple: false,
   bgColor: undefined,
   color: undefined,
   disabled: false,
-  showAdjacentMonths: true
+  showAdjacentMonths: true,
+  elevation: undefined
 })
 
 const emits = defineEmits<{
@@ -38,7 +40,7 @@ const onSave = () => {
     v-model="dateValue"
     :multiple
     :hide-header
-    elevation="24"
+    :elevation
     :bg-color
     :color
     :disabled
