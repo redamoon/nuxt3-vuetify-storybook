@@ -12,6 +12,9 @@ const meta: Meta<typeof VDatePickers> = {
       control: {
         type: 'text'
       }
+    },
+    'onUpdate:modelValue': {
+      action: 'modelValue'
     }
   },
   render: args => ({
