@@ -12,13 +12,17 @@ withDefaults(defineProps<{
   disabled?: boolean;
   showAdjacentMonths?: boolean;
   elevation?: number;
+  border?: number;
+  header?: string;
 }>(), {
   multiple: false,
   bgColor: undefined,
   color: undefined,
   disabled: false,
   showAdjacentMonths: true,
-  elevation: undefined
+  elevation: 24,
+  border: 15,
+  header: '日付選択'
 })
 
 const emits = defineEmits<{
@@ -45,6 +49,8 @@ const onSave = () => {
     :color
     :disabled
     :show-adjacent-months
+    :border
+    :header
   >
     <template v-if="isActions" #actions>
       <v-btn color="info" label="クリア" @click="onClear">

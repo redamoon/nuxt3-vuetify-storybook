@@ -29,7 +29,8 @@ export const Default: Story = {
   args: {
     hideHeader: false,
     multiple: false,
-    isActions: true
+    isActions: true,
+    border: false
   }
 }
 
