@@ -5,11 +5,6 @@ const props = withDefaults(defineProps<{
 }>(), {
   type: 'text'
 })
-const emits = defineEmits<{
-  'update:modelValue': [value: string]
-}>()
-
-const modelValue = ref('')
 </script>
 
 <template>
