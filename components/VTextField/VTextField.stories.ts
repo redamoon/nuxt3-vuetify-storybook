@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import VTextField from './VTextField.vue'
+import { SetIcon } from '@/constants/icons'
+
+const setIconOptions = Object.keys(SetIcon)
 
 type Story = StoryObj<typeof VTextField.vue>;
 
@@ -23,7 +26,22 @@ const meta: Meta<typeof VTextField.vue> = {
       control: {
         type: 'select'
       },
+      defaultValue: 'underlined',
       options: ['underlined', 'outlined', 'filled', 'solo', 'solo-inverted', 'solo-filled', 'plain']
+    },
+    prependIcon: {
+      control: {
+        type: 'select'
+      },
+      defaultValue: undefined,
+      options: setIconOptions
+    },
+    prependInnerIcon: {
+      control: {
+        type: 'select'
+      },
+      defaultValue: undefined,
+      options: setIconOptions
     },
     'onUpdate:modelValue': {
       action: 'modelValue'
@@ -37,7 +55,11 @@ const meta: Meta<typeof VTextField.vue> = {
     baseColor: '',
     variant: 'underlined',
     tile: false,
-    autofocus: false
+    autofocus: false,
+    centerAffix: false,
+    clearable: false,
+    flat: false,
+    prependIcon: ''
   },
   render: args => ({
     components: { VTextField },

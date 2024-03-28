@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { SetIcon } from '@/constants/icons'
 
 const props = withDefaults(defineProps<{
   label?: string
@@ -12,6 +13,11 @@ const props = withDefaults(defineProps<{
   variant?: string
   tile?: boolean
   autofocus?: boolean
+  centerAffix?: boolean
+  clearable?: boolean
+  flat?: boolean
+  prependIcon?: any
+  prependInnerIcon?: any
 }>(), {
   label: '',
   type: 'text',
@@ -20,7 +26,12 @@ const props = withDefaults(defineProps<{
   color: '',
   variant: 'underlined',
   tile: false,
-  autofocus: false
+  autofocus: false,
+  centerAffix: false,
+  clearable: false,
+  flat: false,
+  prependIcon: undefined,
+  prependInnerIcon: undefined
 })
 
 const setValue = ref(props.modelValue)
@@ -48,6 +59,11 @@ const onValueChange = (value: string) => {
       :tile="props.tile"
       :variant="props.variant"
       :autofocus="props.autofocus"
+      :center-affix="props.centerAffix"
+      :clearable="props.clearable"
+      :flat="props.flat"
+      :prepend-icon="SetIcon[props.prependIcon]"
+      :prepend-inner-icon="SetIcon[props.prependInnerIcon]"
       @update:model-value="onValueChange"
     />
   </div>

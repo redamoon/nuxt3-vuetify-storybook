@@ -1,3 +1,4 @@
+import path from 'path';
 import type { StorybookConfig } from "@storybook/vue3-vite";
 
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
@@ -23,5 +24,12 @@ const config: StorybookConfig = {
     autodocs: 'tag',
     defaultName: 'Documentation',
   },
+  async viteFinal(config, { configType }) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../'),
+    }
+    return config;
+  }
 };
 export default config;
