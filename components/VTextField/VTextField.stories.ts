@@ -19,6 +19,12 @@ const meta: Meta<typeof VTextField.vue> = {
       },
       options: ['text', 'number', 'password']
     },
+    variant: {
+      control: {
+        type: 'select'
+      },
+      options: ['underlined', 'outlined', 'filled', 'solo', 'solo-inverted', 'solo-filled', 'plain']
+    },
     'onUpdate:modelValue': {
       action: 'modelValue'
     }
@@ -26,7 +32,12 @@ const meta: Meta<typeof VTextField.vue> = {
   args: {
     label: 'Label',
     type: 'text',
-    placeholder: 'Placeholder'
+    placeholder: 'Placeholder',
+    bgColor: '',
+    baseColor: '',
+    variant: 'underlined',
+    tile: false,
+    autofocus: false
   },
   render: args => ({
     components: { VTextField },
