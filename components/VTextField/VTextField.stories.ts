@@ -18,11 +18,15 @@ const meta: Meta<typeof VTextField.vue> = {
         type: 'select'
       },
       options: ['text', 'number', 'password']
+    },
+    'onUpdate:modelValue': {
+      action: 'modelValue'
     }
   },
   args: {
     label: 'Label',
-    type: 'text'
+    type: 'text',
+    placeholder: 'Placeholder'
   },
   render: args => ({
     components: { VTextField },
@@ -32,6 +36,10 @@ const meta: Meta<typeof VTextField.vue> = {
     template: '<VTextField v-bind="args" />'
   })
 }
-export const Default: Story = {}
+export const Default: Story = {
+  args: {
+    modelValue: ''
+  }
+}
 
 export default meta
