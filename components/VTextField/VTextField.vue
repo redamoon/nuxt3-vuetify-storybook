@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
   flat?: boolean
   prependIcon?: any
   prependInnerIcon?: any
+  clearIcon?: any
 }>(), {
   label: '',
   type: 'text',
@@ -31,10 +32,15 @@ const props = withDefaults(defineProps<{
   clearable: false,
   flat: false,
   prependIcon: undefined,
-  prependInnerIcon: undefined
+  prependInnerIcon: undefined,
+  validationValue: undefined,
+  clearIcon: undefined
 })
 
 const setValue = ref(props.modelValue)
+const rules = {
+  required: (value: string) => !!value || '必須項目です'
+}
 
 const emits = defineEmits<{
   'update:modelValue': [modelValue: string]
@@ -43,6 +49,9 @@ const emits = defineEmits<{
 const onValueChange = (value: string) => {
   setValue.value = value
   emits('update:modelValue', setValue.value)
+}
+const clearMessage = () => {
+  setValue.value = ''
 }
 </script>
 
@@ -64,7 +73,11 @@ const onValueChange = (value: string) => {
       :flat="props.flat"
       :prepend-icon="SetIcon[props.prependIcon]"
       :prepend-inner-icon="SetIcon[props.prependInnerIcon]"
+      :validation-value="setValue"
+      :clear-icon="SetIcon[props.clearIcon]"
+      :rules="[rules.required]"
       @update:model-value="onValueChange"
+      @click:clear="clearMessage"
     />
   </div>
 </template>

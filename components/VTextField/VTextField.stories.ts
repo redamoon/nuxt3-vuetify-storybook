@@ -43,6 +43,13 @@ const meta: Meta<typeof VTextField.vue> = {
       defaultValue: undefined,
       options: setIconOptions
     },
+    clearIcon: {
+      control: {
+        type: 'select'
+      },
+      defaultValue: undefined,
+      options: setIconOptions
+    },
     'onUpdate:modelValue': {
       action: 'modelValue'
     }
@@ -59,7 +66,8 @@ const meta: Meta<typeof VTextField.vue> = {
     centerAffix: false,
     clearable: false,
     flat: false,
-    prependIcon: ''
+    prependIcon: '',
+    validationValue: 'バリデーションメッセージ'
   },
   render: args => ({
     components: { VTextField },
