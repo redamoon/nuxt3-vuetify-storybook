@@ -46,7 +46,17 @@ const options = {
 const rules = {
   required: (value: string) => !!value || '必須項目です',
   date: (value: string) => value.match(/^\d{4}\/\d{2}\/\d{2}$/) || '日付の形式が正しくありません', // YYYY/MM/DD
-  isValidDate: (value: string) => isValidDate(value) || '存在する日付を入力してください' // YYYY/MM/DD
+  isValidDate: (value: string) => isValidDate(value) || '存在する日付を入力してください', // YYYY/MM/DD
+  isBeforeCurrentDate: (value: string) => {
+    if (!isValidDate(value)) {
+      return '存在する日付を入力してください' // isValidDateのチェックを先に行う
+    }
+    const inputDate = new Date(value)
+    const currentDate = new Date()
+    currentDate.setHours(0, 0, 0, 0) // 時間情報をクリアして日付のみの比較を行う
+
+    return currentDate < inputDate || '現在の日付より前の日付は入力できません'
+  }
 }
 
 const emits = defineEmits<{
@@ -83,7 +93,7 @@ const clearMessage = () => {
       :prepend-inner-icon="SetIcon[props.prependInnerIcon]"
       :validation-value="setValue"
       :clear-icon="SetIcon[props.clearIcon]"
-      :rules="[rules.required, rules.date, rules.isValidDate]"
+      :rules="[rules.required, rules.date, rules.isValidDate, rules.isBeforeCurrentDate]"
       @update:model-value="onValueChange"
       @click:clear="clearMessage"
     />
