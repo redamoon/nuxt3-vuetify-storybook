@@ -86,8 +86,8 @@ function cancel () {
       :max="new Date()"
     >
       <template #actions>
-        <v-btn color="primary" variant="text" text="cancel" @click="cancel" />
-        <v-btn color="primary" variant="text" text="OK" @click="save" />
+        <v-btn color="primary" variant="text" label="cancel" @click="cancel" />
+        <v-btn color="primary" variant="text" label="OK" @click="save" />
       </template>
     </v-date-picker>
   </div>
