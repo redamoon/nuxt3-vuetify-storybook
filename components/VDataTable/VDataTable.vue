@@ -12,6 +12,7 @@ interface Item {
 
 const props = defineProps<{
   isPagination: boolean
+  isHideHeader: boolean
   headers: Header[]
   items: Item[]
 }>()
@@ -21,8 +22,8 @@ const props = defineProps<{
   <v-data-table
     :headers="props.headers"
     :items="props.items"
-    is-pagination
   >
+    <template v-if="props.isHideHeader" #header />
     <template v-if="props.isPagination" #bottom />
   </v-data-table>
 </template>

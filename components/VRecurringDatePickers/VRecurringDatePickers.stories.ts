@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import VDatePickers from './VDatePickers.vue'
+import VRecurringDatePickers from './VRecurringDatePickers.vue'
 
-type Story = StoryObj<typeof VDatePickers>;
+type Story = StoryObj<typeof VRecurringDatePickers>;
 
-const meta: Meta<typeof VDatePickers> = {
-  title: 'Components/VDatePickers',
-  component: VDatePickers,
+const meta: Meta<typeof VRecurringDatePickers> = {
+  title: 'Components/VRecurringDatePickers',
+  component: VRecurringDatePickers,
   tags: ['autodocs'],
   argTypes: {
     'onUpdate:modelValue': {
@@ -13,11 +13,11 @@ const meta: Meta<typeof VDatePickers> = {
     }
   },
   render: args => ({
-    components: { VDatePickers },
+    components: { VRecurringDatePickers },
     setup () {
       return { args }
     },
-    template: '<VDatePickers v-bind="args" />'
+    template: '<VRecurringDatePickers v-bind="args" />'
   })
 }
 export const Default: Story = {

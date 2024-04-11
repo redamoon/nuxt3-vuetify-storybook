@@ -20,7 +20,8 @@ const props = withDefaults(defineProps<{
   flat?: boolean
   prependIcon?: any
   prependInnerIcon?: any
-  clearIcon?: any
+  clearIcon?: any,
+  validationValue?: string
 }>(), {
   label: '',
   type: 'text',

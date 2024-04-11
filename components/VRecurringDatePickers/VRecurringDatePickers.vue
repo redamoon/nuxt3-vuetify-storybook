@@ -1,13 +1,54 @@
 <script setup lang="ts">
+// import type { Ref } from 'vue'
 import { computed, ref, unref } from 'vue'
 
+const props = withDefaults(defineProps<{
+  hideHeader?: boolean
+  multiple?: boolean;
+  isActions?: boolean;
+  bgColor?: string;
+  color?: string;
+  disabled?: boolean;
+  showAdjacentMonths?: boolean;
+  elevation?: number;
+  border?: number;
+  header?: string;
+}>(), {
+  multiple: false,
+  bgColor: undefined,
+  color: undefined,
+  disabled: false,
+  showAdjacentMonths: true,
+  elevation: 24,
+  border: 15,
+  header: '日付選択'
+})
+
+// const range: Ref<[Date?, Date?]> = ref([undefined, undefined])
 const range = ref([])
-const menu = ref(false)
 const model = defineModel<Date[]>()
 const dates = computed({
   get: datesBetween,
   set: updateRange
 })
+
+const emits = defineEmits(['update:modelValue'])
+
+const isToday = (date: Date) => {
+  const today = new Date(Date.now())
+  today.setHours(0, 0, 0, 0)
+  return today.getTime() === date.getTime()
+}
+
+const onSave = () => {
+  model.value = range.value
+  emits('update:modelValue', model.value)
+}
+
+const onClear = () => {
+  range.value = model.value || []
+  emits('update:modelValue', range.value)
+}
 
 const dateRangeText = computed(() => {
   if (model.value === undefined || model.value.length === 0) {
@@ -18,13 +59,19 @@ const dateRangeText = computed(() => {
     return `${start.toLocaleDateString()}
       ~ ${end.toLocaleDateString()}`
   } else if (isToday(start)) {
-    return 'テスト'
+    return start.toLocaleDateString() + ':今日'
   } else {
     return start.toLocaleDateString()
   }
 })
 
-function updateRange (date) {
+const minDate = computed(() => {
+  const today = new Date(Date.now())
+  today.setHours(0, 0, 0, 0) // Clear the time information and compare only the date
+  return today
+})
+
+function updateRange (date: Date) {
   const [start, end] = unref(range)
   // if everything is null or everything is not
   if (!!start === !!end) {
@@ -53,22 +100,6 @@ function datesBetween () {
     return range.value
   }
 }
-
-function isToday (date) {
-  const today = new Date(Date.now())
-  today.setHours(0, 0, 0, 0)
-  return today.getTime() === date.getTime()
-}
-
-function save () {
-  model.value = range.value
-  menu.value = false
-}
-
-function cancel () {
-  range.value = model.value || []
-  menu.value = false
-}
 </script>
 
 <template>
@@ -76,18 +107,22 @@ function cancel () {
     <p>{{ dateRangeText }}</p>
     <v-date-picker
       v-model="dates"
-      hide-header
+      :hide-header="props.hideHeader"
       class="datePicker mt-4"
       show-adjacent-months
       show-current
       scrollable
       rounded
       elevation="5"
-      :max="new Date()"
+      :min="minDate"
     >
       <template #actions>
-        <v-btn color="primary" variant="text" label="cancel" @click="cancel" />
-        <v-btn color="primary" variant="text" label="OK" @click="save" />
+        <v-btn color="info" label="クリア" @click="onClear">
+          クリア
+        </v-btn>
+        <v-btn color="primary" label="保存" @click="onSave">
+          保存
+        </v-btn>
       </template>
     </v-date-picker>
   </div>

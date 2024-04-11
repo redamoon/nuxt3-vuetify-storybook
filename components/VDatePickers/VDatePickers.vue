@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const dateValue = ref([])
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   hideHeader?: boolean
   multiple?: boolean;
   isActions?: boolean;
@@ -42,13 +42,13 @@ const onSave = () => {
 <template>
   <v-date-picker
     v-model="dateValue"
-    :multiple
-    :hide-header
-    :elevation
-    :bg-color
-    :color
-    :disabled
-    :show-adjacent-months
+    :multiple="props.multiple"
+    :hide-header="props.hideHeader"
+    :elevation="props.elevation"
+    :bg-color="props.bgColor"
+    :color="props.color"
+    :disabled="props.disabled"
+    :show-adjacent-months="props.showAdjacentMonths"
     :border
     :header
   >
