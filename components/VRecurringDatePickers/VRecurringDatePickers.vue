@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<{
 })
 
 // const range: Ref<[Date?, Date?]> = ref([undefined, undefined])
-const range = ref([])
+const range = ref<Date[]>([])
 const model = defineModel<Date[]>()
 const dates = computed({
   get: datesBetween,
@@ -90,7 +90,7 @@ function datesBetween () {
   const [start, end] = unref(range)
   if (!!start && !!end) {
     const between = []
-    const currentDate = new Date(start)
+    const currentDate: Date = new Date(start)
     while (currentDate <= end) {
       between.push(new Date(currentDate))
       currentDate.setDate(currentDate.getDate() + 1)
