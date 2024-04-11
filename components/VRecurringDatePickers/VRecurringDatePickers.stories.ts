@@ -22,7 +22,7 @@ const meta: Meta<typeof VRecurringDatePickers> = {
 }
 export const Default: Story = {
   args: {
-    hideHeader: false,
+    hideHeader: true,
     multiple: false,
     isActions: true,
     border: 0
