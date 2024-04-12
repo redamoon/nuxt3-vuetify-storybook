@@ -4,7 +4,7 @@ import { computed, ref, unref } from 'vue'
 
 const props = withDefaults(defineProps<{
   hideHeader?: boolean
-  multiple?: boolean;
+  multiple?: boolean | 'range';
   isActions?: boolean;
   bgColor?: string;
   color?: string;
@@ -24,7 +24,6 @@ const props = withDefaults(defineProps<{
   header: '日付選択'
 })
 
-// const range: Ref<[Date?, Date?]> = ref([undefined, undefined])
 const range = ref<Date[]>([])
 const model = defineModel<Date[]>()
 const dates = computed({

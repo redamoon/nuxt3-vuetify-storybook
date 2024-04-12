@@ -5,7 +5,7 @@ const dateValue = ref([])
 
 const props = withDefaults(defineProps<{
   hideHeader?: boolean
-  multiple?: boolean;
+  multiple?: boolean | 'range';
   isActions?: boolean;
   bgColor?: string;
   color?: string;

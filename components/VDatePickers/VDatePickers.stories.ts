@@ -29,4 +29,13 @@ export const Default: Story = {
   }
 }
 
+export const Range: Story = {
+  args: {
+    hideHeader: false,
+    multiple: 'range',
+    isActions: true,
+    border: 0
+  }
+}
+
 export default meta
