@@ -1,6 +1,8 @@
 import { mdiMapMarker, mdiAccount, mdiCloseCircle } from '@mdi/js'
 
-export const SetIcon = {
+type IconType = typeof mdiMapMarker | typeof mdiAccount | typeof mdiCloseCircle | undefined;
+
+export const SetIcon: Record<string, IconType> = {
   undefined,
   $vuetify: '$vuetify',
   'mdi-map-marker': mdiMapMarker,
