@@ -7,12 +7,14 @@ const headers = [
   {
     title: '名前',
     align: 'start',
-    key: 'name'
+    key: 'name',
+    sortable: true
   },
   {
     title: 'Key',
     align: 'start',
-    key: 'key'
+    key: 'key',
+    sortable: true
   }
 ]
 const items = [
@@ -62,17 +64,74 @@ const items = [
   }
 ]
 
+const itemsExpanded = [
+  {
+    name: 'Frozen Yogurt',
+    key: 1,
+    children: [
+      {
+        name: 'Frozen Yogurt'
+      },
+      {
+        name: 'Frozen Yogurt'
+      }
+    ]
+  },
+  {
+    name: 'Ice cream sandwich',
+    key: 2,
+    children: [
+      {
+        name: 'Frozen Yogurt2'
+      },
+      {
+        name: 'Frozen Yogurt2'
+      }
+    ]
+  },
+  {
+    name: 'Eclair',
+    key: 3,
+    children: [
+      {
+        name: 'Frozen Yogurt3'
+      },
+      {
+        name: 'Frozen Yogurt3'
+      }
+    ]
+  },
+  {
+    name: 'Cupcake',
+    key: 4,
+    children: [
+      {
+        name: 'Frozen Yogurt4'
+      },
+      {
+        name: 'Frozen Yogurt4'
+      }
+    ]
+  },
+  {
+    name: 'Gingerbread',
+    key: 5,
+    children: [
+      {
+        name: 'Frozen Yogurt5'
+      },
+      {
+        name: 'Frozen Yogurt5'
+      }
+    ]
+  }
+]
+
 const meta: Meta<typeof VDatatable> = {
   title: 'Components/VDataTable',
   component: VDatatable,
   tags: ['autodocs'],
-  argTypes: {
-    label: {
-      control: {
-        type: 'text'
-      }
-    }
-  },
+  argTypes: {},
   render: args => ({
     components: { VDatatable },
     setup () {
@@ -95,5 +154,13 @@ export const PaginationNone: Story = {
     items
   }
 }
-
+export const Expanded: Story = {
+  args: {
+    isHideHeader: false,
+    isPagination: true,
+    expanded: true,
+    headers,
+    items: itemsExpanded
+  }
+}
 export default meta
