@@ -20,47 +20,47 @@ const headers = [
 const items = [
   {
     name: 'Frozen Yogurt',
-    key: '1'
+    key: 1
   },
   {
     name: 'Ice cream sandwich',
-    key: '2'
+    key: 2
   },
   {
     name: 'Eclair',
-    key: '3'
+    key: 3
   },
   {
     name: 'Cupcake',
-    key: '4'
+    key: 4
   },
   {
     name: 'Gingerbread',
-    key: '5'
+    key: 5
   },
   {
     name: 'Frozen Yogurt2',
-    key: '6'
+    key: 6
   },
   {
     name: 'Ice cream sandwich2',
-    key: '7'
+    key: 7
   },
   {
     name: 'Eclair2',
-    key: '8'
+    key: 8
   },
   {
     name: 'Cupcake2',
-    key: '9'
+    key: 9
   },
   {
     name: 'Gingerbread2',
-    key: '10'
+    key: 10
   },
   {
     name: 'Gingerbread3',
-    key: '11'
+    key: 11
   }
 ]
 
