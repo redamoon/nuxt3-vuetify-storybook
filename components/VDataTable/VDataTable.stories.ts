@@ -15,8 +15,7 @@ const headers = [
     align: 'start',
     key: 'id',
     sortable: true
-  },
-  { title: '', key: 'data-table-expand', sortable: false }
+  }
 ]
 const items = [
   {
@@ -143,6 +142,7 @@ const meta: Meta<typeof VDatatable> = {
 }
 export const Default: Story = {
   args: {
+    expanded: false,
     headers,
     items
   }
@@ -151,6 +151,7 @@ export const Default: Story = {
 export const PaginationNone: Story = {
   args: {
     isPagination: true,
+    expanded: false,
     headers,
     items
   }

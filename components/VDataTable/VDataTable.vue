@@ -30,7 +30,7 @@ const items = computed(() => props.items.map(({ key: id, ...others }) => ({ ...o
   <v-data-table
     :headers="props.headers"
     :items="items"
-    expand-on-click
+    :expand-on-click="props.expanded"
     :show-expand="props.expanded"
   >
     <template v-if="props.isHideHeader" #headers />
