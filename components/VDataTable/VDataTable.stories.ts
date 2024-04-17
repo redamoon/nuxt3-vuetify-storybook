@@ -13,9 +13,10 @@ const headers = [
   {
     title: 'Key',
     align: 'start',
-    key: 'key',
+    key: 'id',
     sortable: true
-  }
+  },
+  { title: '', key: 'data-table-expand', sortable: false }
 ]
 const items = [
   {
