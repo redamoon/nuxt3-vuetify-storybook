@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 interface Header {
   title: string
@@ -23,6 +23,8 @@ const props = defineProps<{
   expanded?: boolean
 }>()
 
+const search = ref('')
+
 const items = computed(() => props.items.map(({ key: id, ...others }) => ({ ...others, id })))
 </script>
 
@@ -32,7 +34,16 @@ const items = computed(() => props.items.map(({ key: id, ...others }) => ({ ...o
     :items="items"
     :expand-on-click="props.expanded"
     :show-expand="props.expanded"
+    :search="search"
+    :custom-filter="() => true"
   >
+    <template #top>
+      <v-text-field
+        v-model="search"
+        variant="underlined"
+        label="Search"
+      />
+    </template>
     <template v-if="props.isHideHeader" #headers />
     <template #expanded-row="{ item }">
       <td :colspan="props.headers.length + 1">
