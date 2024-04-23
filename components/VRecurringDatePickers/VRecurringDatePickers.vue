@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<{
   elevation?: number;
   border?: number;
   header?: string;
+  isAfter: boolean;
 }>(), {
   multiple: false,
   bgColor: undefined,
@@ -21,15 +22,17 @@ const props = withDefaults(defineProps<{
   showAdjacentMonths: true,
   elevation: 24,
   border: 15,
-  header: '日付選択'
+  header: '日付選択',
+  isAfter: false
 })
 
 const range = ref<Date[]>([])
 const model = defineModel<Date[]>()
-const dates = computed({
-  get: datesBetween,
-  set: updateRange
-})
+const dates = ref(null)
+// const dates = computed({
+//   get: datesBetween,
+//   set: updateRange
+// })
 
 const emits = defineEmits(['update:modelValue'])
 
@@ -58,7 +61,7 @@ const dateRangeText = computed(() => {
     return `${start.toLocaleDateString()}
       ~ ${end.toLocaleDateString()}`
   } else if (isToday(start)) {
-    return start.toLocaleDateString() + ':今日'
+    return start.toLocaleDateString()
   } else {
     return start.toLocaleDateString()
   }
@@ -81,7 +84,7 @@ function updateRange (date: Date) {
     range.value = [start, date]
   }
 }
-
+// 期間の範囲で propsから受け取ったのを datesBetween で間の dateを配列に返す for
 function datesBetween () {
   if (range.value === undefined) {
     return []
@@ -113,7 +116,8 @@ function datesBetween () {
       scrollable
       rounded
       elevation="5"
-      :min="minDate"
+      :multiple="props.multiple"
+      :min="props.isAfter && minDate"
     >
       <template #actions>
         <v-btn color="info" label="クリア" @click="onClear">
