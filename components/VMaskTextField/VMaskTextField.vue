@@ -25,7 +25,9 @@ const props = withDefaults(defineProps<{
   prependIcon?: any
   prependInnerIcon?: any
   clearIcon?: any
-  validationValue?: string
+  validationValue?: string,
+  maskPattern: string,
+  fieldType: 'date' | 'phone' | 'recurring'
 }>(), {
   label: '',
   type: 'text',
@@ -41,18 +43,27 @@ const props = withDefaults(defineProps<{
   prependIcon: undefined,
   prependInnerIcon: undefined,
   validationValue: undefined,
-  clearIcon: undefined
+  clearIcon: undefined,
+  maskPattern: '####-##-##',
+  fieldType: 'date'
 })
+
+const FORMAT = {
+  BOTH: 'YYYY-MM-DD'
+}
 
 const setValue = ref(props.modelValue)
 const options = {
-  mask: '####/##/##'
+  mask: props.maskPattern
 }
 const rules: Record<string, ValidationRule> = {
   required: (value: string) => !!value || '必須項目です',
-  date: (value: string) => value.match(/^\d{4}\/\d{2}\/\d{2}$/) ? true : '日付の形式が正しくありません', // YYYY/MM/DD
-  isValidDate: (value: string) => isValidDate(value) || '存在する日付を入力してください', // YYYY/MM/DD
+  isValidDate: (value: string) => {
+    if (props.fieldType !== 'date') { return true } // 日付型以外はチェックしない
+    return isValidDate(value) || '存在する日付を入力してください'
+  },
   isBeforeCurrentDate: (value: string) => {
+    if (props.fieldType !== 'date') { return true } // 日付型以外はチェックしない
     if (!isValidDate(value)) {
       return '存在する日付を入力してください' // isValidDateのチェックを先に行う
     }
@@ -98,7 +109,7 @@ const clearMessage = () => {
       :prepend-inner-icon="SetIcon[props.prependInnerIcon]"
       :validation-value="setValue"
       :clear-icon="SetIcon[props.clearIcon]"
-      :rules="[rules.required, rules.date, rules.isValidDate, rules.isBeforeCurrentDate]"
+      :rules="[rules.required, rules.isValidDate, rules.isBeforeCurrentDate]"
       @update:model-value="onValueChange"
       @click:clear="clearMessage"
     />

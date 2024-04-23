@@ -83,4 +83,29 @@ export const Default: Story = {
   }
 }
 
+export const OneDay: Story = {
+  args: {
+    label: '日付',
+    modelValue: '2024-04-01',
+    prependInnerIcon: 'mdi-calendar'
+  }
+}
+
+export const Recurring: Story = {
+  args: {
+    label: '繰り返し日付',
+    modelValue: '2024-04-01 ~ 2024-04-30',
+    maskPattern: '####-##-## ~ ####-##-##'
+  }
+}
+
+export const Phone: Story = {
+  args: {
+    label: '携帯番号',
+    modelValue: '090-0000-0000',
+    maskPattern: '###-####-####',
+    fieldType: 'phone'
+  }
+}
+
 export default meta
