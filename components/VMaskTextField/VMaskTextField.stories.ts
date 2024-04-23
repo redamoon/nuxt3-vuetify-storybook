@@ -79,7 +79,9 @@ const meta: Meta<typeof VMaskTextField> = {
 }
 export const Default: Story = {
   args: {
-    modelValue: ''
+    label: '数字のみ',
+    modelValue: '',
+    maskPattern: '####'
   }
 }
 
@@ -87,7 +89,9 @@ export const OneDay: Story = {
   args: {
     label: '日付',
     modelValue: '2024-04-01',
-    prependInnerIcon: 'mdi-calendar'
+    prependInnerIcon: 'mdi-calendar',
+    fieldType: 'date',
+    isBefore: true
   }
 }
 
@@ -95,7 +99,8 @@ export const Recurring: Story = {
   args: {
     label: '繰り返し日付',
     modelValue: '2024-04-01 ~ 2024-04-30',
-    maskPattern: '####-##-## ~ ####-##-##'
+    maskPattern: '####-##-## ~ ####-##-##',
+    fieldType: 'recurring'
   }
 }
 

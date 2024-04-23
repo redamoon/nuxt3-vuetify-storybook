@@ -27,7 +27,8 @@ const props = withDefaults(defineProps<{
   clearIcon?: any
   validationValue?: string,
   maskPattern: string,
-  fieldType: 'date' | 'phone' | 'recurring'
+  fieldType: 'date' | 'phone' | 'recurring' | 'none',
+  isBefore: boolean
 }>(), {
   label: '',
   type: 'text',
@@ -45,12 +46,14 @@ const props = withDefaults(defineProps<{
   validationValue: undefined,
   clearIcon: undefined,
   maskPattern: '####-##-##',
-  fieldType: 'date'
+  fieldType: 'none',
+  isBefore: false
 })
 
-const FORMAT = {
-  BOTH: 'YYYY-MM-DD'
-}
+const startDate = ref('')
+const endDate = ref('')
+const startDateTime = ref('')
+const endDateTime = ref('')
 
 const setValue = ref(props.modelValue)
 const options = {
@@ -63,9 +66,19 @@ const rules: Record<string, ValidationRule> = {
     return isValidDate(value) || '存在する日付を入力してください'
   },
   isBeforeCurrentDate: (value: string) => {
-    if (props.fieldType !== 'date') { return true } // 日付型以外はチェックしない
+    if (!props.isBefore) { return true } // チェックしない場合はtrueを返す
+    if (props.fieldType !== 'date' && props.fieldType !== 'recurring') { return true } // 日付型以外はチェックしない
     if (!isValidDate(value)) {
       return '存在する日付を入力してください' // isValidDateのチェックを先に行う
+    }
+    // date の場合
+    if (props.fieldType === 'date') {
+      // 日付のみの比較を行う
+    }
+    // recurring の場合
+    if (props.fieldType === 'recurring') {
+      // 繰り返しの場合
+      // start_date と end_date の比較を行う
     }
     const inputDate = new Date(value)
     const currentDate = new Date()

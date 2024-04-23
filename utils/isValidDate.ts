@@ -7,7 +7,6 @@ export const isValidDate = (
   const d = new Date(dateStr)
   try {
     const formatDate = DateFormat(d, format)
-    console.log(dateStr === formatDate)
     return dateStr === formatDate
   } catch (error) {
     return false
