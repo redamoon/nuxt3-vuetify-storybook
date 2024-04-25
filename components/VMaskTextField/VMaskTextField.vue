@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
   clearIcon?: any
   validationValue?: string,
   maskPattern: string,
-  fieldType: 'date' | 'phone' | 'recurring' | 'none',
+  fieldType: 'date' | 'phone' | 'recurring' | 'recurringTime' | 'none',
   isBefore: boolean
 }>(), {
   label: '',

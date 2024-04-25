@@ -104,6 +104,15 @@ export const Recurring: Story = {
   }
 }
 
+export const RecurringTime: Story = {
+  args: {
+    label: '繰り返し日時：時間',
+    modelValue: '2024-04-01 10:00 ~ 2024-04-30 10:00',
+    maskPattern: '####-##-## ##:## ~ ####-##-## ##:##',
+    fieldType: 'recurringTime'
+  }
+}
+
 export const Phone: Story = {
   args: {
     label: '携帯番号',
