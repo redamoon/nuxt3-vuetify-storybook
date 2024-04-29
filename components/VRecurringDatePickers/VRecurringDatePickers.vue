@@ -28,11 +28,11 @@ const props = withDefaults(defineProps<{
 
 const range = ref<Date[]>([])
 const model = defineModel<Date[]>()
-const dates = ref(null)
-// const dates = computed({
-//   get: datesBetween,
-//   set: updateRange
-// })
+// const dates = ref(null)
+const dates = computed({
+  get: datesBetween,
+  set: updateRange
+})
 
 const emits = defineEmits(['update:modelValue'])
 

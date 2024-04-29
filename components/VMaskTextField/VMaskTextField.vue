@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<{
   fieldType: 'date' | 'phone' | 'recurring' | 'recurringTime' | 'none',
   isBefore: boolean
 }>(), {
+  modelValue: '',
   label: '',
   type: 'text',
   bgColor: '',
@@ -49,11 +50,6 @@ const props = withDefaults(defineProps<{
   fieldType: 'none',
   isBefore: false
 })
-
-const startDate = ref('')
-const endDate = ref('')
-const startDateTime = ref('')
-const endDateTime = ref('')
 
 const setValue = ref(props.modelValue)
 const options = {
