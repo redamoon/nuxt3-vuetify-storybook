@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { format } from 'date-fns'
 
 const dateValue = ref([])
 
@@ -26,7 +27,7 @@ const props = withDefaults(defineProps<{
 })
 
 const emits = defineEmits<{
-  'update:modelValue': [value: Date[] | Date]
+  'update:modelValue': [value: string[]]
 }>()
 
 const onClear = () => {
@@ -34,7 +35,12 @@ const onClear = () => {
   emits('update:modelValue', dateValue.value)
 }
 const onSave = () => {
-  emits('update:modelValue', dateValue.value)
+  const dates = dateValue.value.map(date => format(date, 'yyyy-MM-dd'))
+  const startDate = dates.at(0)
+  const endDate = dates.at(-1)
+  if (startDate !== undefined && endDate !== undefined) {
+    emits('update:modelValue', [startDate, endDate])
+  }
 }
 
 </script>
