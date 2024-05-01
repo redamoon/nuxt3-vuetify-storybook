@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<{
 })
 
 const emits = defineEmits<{
-  'update:modelValue': [value: string[] | Date]
+  'update:modelValue': [value: string[]]
 }>()
 
 const onClear = () => {
