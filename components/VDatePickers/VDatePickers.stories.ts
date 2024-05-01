@@ -26,7 +26,8 @@ export const Default: Story = {
     hideWeekdays: false,
     multiple: false,
     isActions: true,
-    border: 0
+    border: 0,
+    header: 'ヘッダー'
   }
 }
 

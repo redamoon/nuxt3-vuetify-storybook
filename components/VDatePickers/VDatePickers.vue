@@ -23,12 +23,11 @@ const props = withDefaults(defineProps<{
   disabled: false,
   showAdjacentMonths: true,
   elevation: 24,
-  border: 15,
-  header: '日付選択'
+  border: 15
 })
 
 const emits = defineEmits<{
-  'update:modelValue': [value: string[]]
+  'update:modelValue': [value: string[] | Date]
 }>()
 
 const onClear = () => {
@@ -36,6 +35,9 @@ const onClear = () => {
   emits('update:modelValue', dateValue.value)
 }
 const onSave = () => {
+  if (!Array.isArray(dateValue.value)) {
+    return emits('update:modelValue', dateValue.value)
+  }
   const dates = dateValue.value.map(date => format(date, 'yyyy-MM-dd'))
   const startDate = dates.at(0)
   const endDate = dates.at(-1)
@@ -58,8 +60,12 @@ const onSave = () => {
     :disabled="props.disabled"
     :show-adjacent-months="props.showAdjacentMonths"
     :border
-    :header
   >
+    <template v-if="props.header" #header>
+      <v-card-title>
+        {{ props.header }}
+      </v-card-title>
+    </template>
     <template v-if="isActions" #actions>
       <v-btn color="info" label="クリア" @click="onClear">
         クリア
