@@ -6,6 +6,7 @@ const dateValue = ref([])
 
 const props = withDefaults(defineProps<{
   hideHeader?: boolean
+  hideWeekdays?: boolean
   multiple?: boolean | 'range';
   isActions?: boolean;
   bgColor?: string;
@@ -50,6 +51,7 @@ const onSave = () => {
     v-model="dateValue"
     :multiple="props.multiple"
     :hide-header="props.hideHeader"
+    :hide-weekdays="props.hideWeekdays"
     :elevation="props.elevation"
     :bg-color="props.bgColor"
     :color="props.color"

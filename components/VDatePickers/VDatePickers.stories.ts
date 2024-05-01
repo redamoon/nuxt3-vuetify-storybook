@@ -23,7 +23,17 @@ const meta: Meta<typeof VDatePickers> = {
 export const Default: Story = {
   args: {
     hideHeader: false,
+    hideWeekdays: false,
     multiple: false,
+    isActions: true,
+    border: 0
+  }
+}
+
+export const Multiple: Story = {
+  args: {
+    hideHeader: false,
+    multiple: true,
     isActions: true,
     border: 0
   }
