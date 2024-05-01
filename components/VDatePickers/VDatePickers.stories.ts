@@ -10,6 +10,18 @@ const meta: Meta<typeof VDatePickers> = {
   argTypes: {
     'onUpdate:modelValue': {
       action: 'modelValue'
+    },
+    variant: {
+      control: {
+        type: 'select'
+      },
+      options: ['underlined',
+        'outlined',
+        'filled',
+        'solo',
+        'solo-inverted',
+        'solo-filled',
+        'plain']
     }
   },
   render: args => ({

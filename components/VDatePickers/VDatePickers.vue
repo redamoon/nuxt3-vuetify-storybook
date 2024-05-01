@@ -16,6 +16,13 @@ const props = withDefaults(defineProps<{
   elevation?: number;
   border?: number;
   header: string;
+  variant: 'underlined'
+  | 'outlined'
+  | 'filled'
+  | 'solo'
+  | 'solo-inverted'
+  | 'solo-filled'
+  | 'plain'
 }>(), {
   multiple: false,
   bgColor: undefined,
@@ -23,7 +30,8 @@ const props = withDefaults(defineProps<{
   disabled: false,
   showAdjacentMonths: true,
   elevation: 24,
-  border: 15
+  border: 15,
+  variant: 'filled'
 })
 
 const emits = defineEmits<{
