@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
   showAdjacentMonths?: boolean;
   elevation?: number;
   border?: number;
-  header?: string;
+  header: string;
 }>(), {
   multiple: false,
   bgColor: undefined,
@@ -36,13 +36,17 @@ const onClear = () => {
 }
 const onSave = () => {
   if (!Array.isArray(dateValue.value)) {
-    return emits('update:modelValue', dateValue.value)
+    dateValue.value = [dateValue.value]
   }
   const dates = dateValue.value.map(date => format(date, 'yyyy-MM-dd'))
   const startDate = dates.at(0)
   const endDate = dates.at(-1)
   if (startDate !== undefined && endDate !== undefined) {
-    emits('update:modelValue', [startDate, endDate])
+    if (!props.multiple) {
+      emits('update:modelValue', [startDate])
+    } else {
+      emits('update:modelValue', [startDate, endDate])
+    }
   }
 }
 
