@@ -1,0 +1,34 @@
+import type { Meta, StoryObj } from '@storybook/vue3'
+import DateTimePicker from './DateTimePicker.vue'
+
+type Story = StoryObj<typeof DateTimePicker>;
+
+const meta: Meta<typeof DateTimePicker> = {
+  title: 'Features/DateTimePicker',
+  component: DateTimePicker,
+  tags: ['autodocs'],
+  argTypes: {
+    'onUpdate:modelValue': {
+      action: 'modelValue'
+    }
+  },
+  render: args => ({
+    components: { DateTimePicker },
+    setup () {
+      return { args }
+    },
+    template: '<DateTimePicker v-bind="args" />'
+  })
+}
+export const Default: Story = {
+  args: {
+    hideHeader: false,
+    hideWeekdays: false,
+    multiple: false,
+    isActions: true,
+    border: 0,
+    header: 'ヘッダー'
+  }
+}
+
+export default meta
