@@ -7,11 +7,6 @@ const meta: Meta<typeof DateTimePicker> = {
   title: 'Features/DateTimePicker',
   component: DateTimePicker,
   tags: ['autodocs'],
-  argTypes: {
-    'onUpdate:modelValue': {
-      action: 'modelValue'
-    }
-  },
   render: args => ({
     components: { DateTimePicker },
     setup () {
@@ -21,14 +16,7 @@ const meta: Meta<typeof DateTimePicker> = {
   })
 }
 export const Default: Story = {
-  args: {
-    hideHeader: false,
-    hideWeekdays: false,
-    multiple: false,
-    isActions: true,
-    border: 0,
-    header: 'ヘッダー'
-  }
+  args: {}
 }
 
 export default meta
