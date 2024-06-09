@@ -16,6 +16,7 @@
       </template>
       <template #item="{ item, index }">
         <v-list-item :class="selectedId === item.raw.id && 'active'" @click="selectedItem(index)">
+          <img :src="item.raw.url" alt="">
           <v-list-item-title>
             {{ item.raw.name }}
           </v-list-item-title>
@@ -45,8 +46,8 @@ type Item = {
 
 const dialog = ref(false)
 const items = ref([
-  { name: 'Ken', url: 'https://randomuser.me/apix', id: 1 },
-  { name: 'John', url: 'https://randomuser.me/apix', id: 2 }
+  { name: 'Ken', url: 'https://picsum.photos/60/60', id: 1 },
+  { name: 'John', url: 'https://picsum.photos/60/60', id: 2 }
 ])
 
 const modelValue = ref<Item | null>(null)
