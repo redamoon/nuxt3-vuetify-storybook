@@ -41,7 +41,7 @@ import { ref, watch } from 'vue'
 import VTextField from '@/components/VTextField/VTextField.vue'
 
 const props = withDefaults(defineProps<{
-  name: string
+  name?: string
 }>(), {
   name: ''
 })
