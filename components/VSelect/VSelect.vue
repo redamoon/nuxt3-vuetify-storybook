@@ -1,13 +1,3 @@
-<template>
-  <div>
-    <v-autocomplete
-      :items="items"
-      :model-value="modelValue"
-      item-title="name"
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -24,3 +14,13 @@ const items = ref([
 
 const modelValue = ref<Item | null>(null)
 </script>
+
+<template>
+  <div>
+    <v-autocomplete
+      :items="items"
+      :model-value="modelValue"
+      item-title="name"
+    />
+  </div>
+</template>
