@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const showContents = ref(false)
+const tab = ref(null)
 </script>
 <template>
   <NuxtLayout>
@@ -18,7 +19,22 @@ const showContents = ref(false)
       <v-sheet v-if="showContents" class="pa-4 text-center mx-auto">
         コンテンツです。
       </v-sheet>
-      <NuxtPage />
+      <v-tabs v-model="tab">
+        <v-tab to="/">
+          Home
+        </v-tab>
+        <v-tab to="/about">
+          About
+        </v-tab>
+      </v-tabs>
+      <v-window>
+        <v-window-item value="/">
+          <NuxtPage />
+        </v-window-item>
+        <v-window-item value="/about">
+          <NuxtPage />
+        </v-window-item>
+      </v-window>
     </v-app>
   </NuxtLayout>
 </template>
