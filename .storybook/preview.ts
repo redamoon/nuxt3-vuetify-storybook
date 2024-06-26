@@ -1,20 +1,18 @@
 import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
 import * as VueRouter from "vue-router";
-import HomePage from "../pages/index.vue";
-import AboutPage from "../pages/about.vue";
 
 // Routes
 const routes: VueRouter.RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => HomePage
+    component: () => import('../pages/index.vue')
   },
   {
     path: '/about',
     name: 'About',
-    component: () => AboutPage
+    component: () => import('../pages/about.vue')
   }
 ]
 
