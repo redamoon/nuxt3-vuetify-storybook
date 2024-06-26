@@ -1,6 +1,6 @@
 <template>
-  <div>
+  <v-container>
     <h1>HOME</h1>
     <p>Welcome to your Vue.js app!</p>
-  </div>
+  </v-container>
 </template>
