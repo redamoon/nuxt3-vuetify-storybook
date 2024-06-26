@@ -1,5 +1,30 @@
 import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
+import * as VueRouter from "vue-router";
+import HomePage from "../pages/index.vue";
+import AboutPage from "../pages/about.vue";
+
+// Routes
+const routes: VueRouter.RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => HomePage
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => AboutPage
+  }
+]
+
+const createRouter = (type: 'memory' | 'history') => {
+  const history = type === 'memory' ? VueRouter.createMemoryHistory() : VueRouter.createWebHistory();
+  return VueRouter.createRouter({ history, routes });
+};
+
+const router = createRouter('memory');
+
 // Styles
 import vuetify from "../utils/vuetify";
 import VueApexCharts from 'vue3-apexcharts'
@@ -8,6 +33,7 @@ setup((app) => {
   if (app) {
     app.use(vuetify)
     app.use(VueApexCharts)
+    app.use(router)
   }
 })
 
