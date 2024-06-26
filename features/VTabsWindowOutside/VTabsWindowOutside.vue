@@ -13,7 +13,8 @@ const tabs = ref(null)
 </script>
 
 <template>
-  <p>このページは VTabsWindow を利用した場合のTabsコンポーネントです。</p>
+  <p>このページは VWindow VTabs の外に配置して利用した場合のTabsコンポーネントです。</p>
+  <p>VWindowをタブのように使う場合は、v-sheetなどブロック要素にした上で、v-tabsの外で定義しなければならない。</p>
   <v-tabs v-model="tabs">
     <v-tab value="1">
       コンテンツ1
@@ -21,31 +22,43 @@ const tabs = ref(null)
     <v-tab value="2">
       コンテンツ2
     </v-tab>
-    <template #window>
-      <v-tabs-window-item value="1" :transition="props.transition" :reverse-transition="props.transition">
+  </v-tabs>
+  <v-window v-model="tabs">
+    <v-window-item value="1" :transition="props.transition" :reverse-transition="props.transition">
+      <v-sheet
+        tile
+      >
         <v-card variant="flat">
           <v-card-title>コンテンツ1</v-card-title>
           <v-card-text>
             コンテンツ1です。
           </v-card-text>
         </v-card>
-      </v-tabs-window-item>
-      <v-tabs-window-item value="2" :transition="props.transition" :reverse-transition="props.transition">
+      </v-sheet>
+    </v-window-item>
+    <v-tabs-window-item value="2" :transition="props.transition" :reverse-transition="props.transition">
+      <v-sheet
+        tile
+      >
         <v-card variant="flat">
           <v-card-title>コンテンツ2</v-card-title>
           <v-card-text>
             コンテンツ2です。
           </v-card-text>
         </v-card>
-      </v-tabs-window-item>
-      <v-tabs-window-item value="3" :transition="transition" :reverse-transition="transition">
+      </v-sheet>
+    </v-tabs-window-item>
+    <v-tabs-window-item value="3" :transition="transition" :reverse-transition="transition">
+      <v-sheet
+        tile
+      >
         <v-card variant="flat">
           <v-card-title>コンテンツ3</v-card-title>
           <v-card-text>
             コンテンツ3です。
           </v-card-text>
         </v-card>
-      </v-tabs-window-item>
-    </template>
-  </v-tabs>
+      </v-sheet>
+    </v-tabs-window-item>
+  </v-window>
 </template>

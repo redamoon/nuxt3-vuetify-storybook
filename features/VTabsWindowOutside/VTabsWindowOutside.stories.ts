@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import VTabs from './VTabs.vue'
+import VTabsWindowOutside from './VTabsWindowOutside.vue'
 
-type Story = StoryObj<typeof VTabs>;
+type Story = StoryObj<typeof VTabsWindowOutside>;
 
-const meta: Meta<typeof VTabs> = {
-  title: 'Features/VTabs',
-  component: VTabs,
+const meta: Meta<typeof VTabsWindowOutside> = {
+  title: 'Features/VTabsWindowOutside',
+  component: VTabsWindowOutside,
   tags: ['autodocs'],
   argTypes: {
     transition: {
@@ -22,11 +22,11 @@ const meta: Meta<typeof VTabs> = {
     }
   },
   render: args => ({
-    components: { VTabs },
+    components: { VTabsWindowOutside },
     setup () {
       return { args }
     },
-    template: '<VTabs v-bind="args" />'
+    template: '<VTabsWindowOutside v-bind="args" />'
   })
 }
 export const Default: Story = {
