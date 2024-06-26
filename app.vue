@@ -1,25 +1,70 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const showContents = ref(false)
-const tab = ref(null)
+const tabsWindow = ref(null)
+const tabs = ref(null)
+const tabsWindow2 = ref(null)
 </script>
+
 <template>
   <NuxtLayout>
     <v-app>
-      <v-sheet class="pa-4 text-center mx-auto">
-        <v-btn color="primary" @click="showContents = !showContents">
-          <template v-if="!showContents">
-            Open Content
-          </template>
-          <template v-if="showContents">
-            Close Content
-          </template>
-        </v-btn>
-      </v-sheet>
-      <v-sheet v-if="showContents" class="pa-4 text-center mx-auto">
-        コンテンツです。
-      </v-sheet>
-      <v-tabs v-model="tab">
+      <p>VTabs VTabsWindow</p>
+      <v-tabs v-model="tabs">
+        <v-tab value="1">
+          コンテンツ1
+        </v-tab>
+        <v-tab value="2">
+          コンテンツ2
+        </v-tab>
+        <template #window>
+          <v-tabs-window-item value="1" transition="none" reverse-transition="none">
+            <v-card variant="flat">
+              <v-card-title>コンテンツ1</v-card-title>
+              <v-card-text>
+                コンテンツ1です。
+              </v-card-text>
+            </v-card>
+          </v-tabs-window-item>
+          <v-tabs-window-item value="2" transition="none" reverse-transition="none">
+            <v-card variant="flat">
+              <v-card-title>コンテンツ2</v-card-title>
+              <v-card-text>
+                コンテンツ2です。
+              </v-card-text>
+            </v-card>
+          </v-tabs-window-item>
+        </template>
+      </v-tabs>
+      <p>VTabs VWindow</p>
+      <v-tabs v-model="tabsWindow2">
+        <v-tab value="1">
+          コンテンツ1
+        </v-tab>
+        <v-tab value="2">
+          コンテンツ2
+        </v-tab>
+        <template #window>
+          <v-window-item value="1">
+            <v-card>
+              <v-card-title>コンテンツ1</v-card-title>
+              <v-card-text>
+                コンテンツ1です。
+              </v-card-text>
+            </v-card>
+          </v-window-item>
+          <v-window-item value="2">
+            <v-card>
+              <v-card-title>コンテンツ2</v-card-title>
+              <v-card-text>
+                コンテンツ2です。
+              </v-card-text>
+            </v-card>
+          </v-window-item>
+        </template>
+      </v-tabs>
+      <p>VTabs ページ遷移</p>
+      <v-tabs>
         <v-tab to="/">
           Home
         </v-tab>
@@ -27,14 +72,7 @@ const tab = ref(null)
           About
         </v-tab>
       </v-tabs>
-      <v-window>
-        <v-window-item value="/">
-          <NuxtPage />
-        </v-window-item>
-        <v-window-item value="/about">
-          <NuxtPage />
-        </v-window-item>
-      </v-window>
+      <nuxt-page />
     </v-app>
   </NuxtLayout>
 </template>
