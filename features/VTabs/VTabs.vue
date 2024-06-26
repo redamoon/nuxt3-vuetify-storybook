@@ -14,6 +14,7 @@ const tabs = ref(null)
 
 <template>
   <p>このページは VTabsWindow を利用した場合のTabsコンポーネントです。</p>
+  <p>Vuetify 3.6系からは、VTabsWindowが実装され、v-tabsに template #window のslotが定義された。この中に VTabsWindowItemを定義してタブの実装ができる。</p>
   <v-tabs v-model="tabs">
     <v-tab value="1">
       コンテンツ1
