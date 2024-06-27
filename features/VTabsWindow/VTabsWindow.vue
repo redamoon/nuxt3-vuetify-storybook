@@ -39,7 +39,7 @@ const tabs = ref(null)
           </v-card>
         </v-sheet>
       </v-window-item>
-      <v-tabs-window-item value="2" :transition="props.transition" :reverse-transition="props.transition">
+      <v-window-item value="2" :transition="props.transition" :reverse-transition="props.transition">
         <v-sheet
           height="400"
           tile
@@ -51,8 +51,8 @@ const tabs = ref(null)
             </v-card-text>
           </v-card>
         </v-sheet>
-      </v-tabs-window-item>
-      <v-tabs-window-item value="3" :transition="transition" :reverse-transition="transition">
+      </v-window-item>
+      <v-window-item value="3" :transition="transition" :reverse-transition="transition">
         <v-sheet
           height="400"
           tile
@@ -64,7 +64,7 @@ const tabs = ref(null)
             </v-card-text>
           </v-card>
         </v-sheet>
-      </v-tabs-window-item>
+      </v-window-item>
     </v-window>
   </v-tabs>
 </template>
