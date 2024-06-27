@@ -22,6 +22,9 @@ const tabs = ref(null)
     <v-tab value="2">
       コンテンツ2
     </v-tab>
+    <v-tab value="3">
+      コンテンツ3
+    </v-tab>
     <v-window v-model="tabs">
       <v-window-item value="1" :transition="props.transition" :reverse-transition="props.transition">
         <v-sheet
